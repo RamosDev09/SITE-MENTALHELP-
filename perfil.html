@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil — Mental Help</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo"><img decoding="async" class="logo__img" src="img/logo-sm.png" alt="" width="47" height="40" />Mental Help</a>
+
+      <nav class="nav" id="nav">
+        <a href="index.html">Início</a>
+        <a href="diario.html">Diário</a>
+        <a href="conteudos.html">Conteúdos</a>
+        <a href="comunidade.html">Comunidade</a>
+      </nav>
+
+      <div class="header__actions" id="auth-area">
+        <a href="login.html" class="link-entrar">Entrar</a>
+        <a href="cadastro.html" class="btn btn--primary">Criar conta</a>
+      </div>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow eyebrow--light">Perfil</p>
+        <h1 id="perfil-titulo">Seu perfil na comunidade</h1>
+        <p class="page-hero__lead" id="perfil-lead">
+          Veja o quanto você participou, deixe o perfil do seu jeito e gerencie seus desabafos.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--tint section--compact">
+      <div class="container">
+
+        <!-- Sem login -->
+        <div class="notice-card" id="perfil-aviso" hidden>
+          <h2>Entre para ver o perfil</h2>
+          <p>O perfil fica ligado à sua conta. Seu nome e e-mail nunca aparecem para outras pessoas.</p>
+          <div class="notice-card__actions">
+            <a href="login.html" class="btn btn--primary">Entrar</a>
+            <a href="cadastro.html" class="btn btn--outline">Criar conta</a>
+          </div>
+        </div>
+
+        <!-- Perfil de outra pessoa -->
+        <div id="perfil-publico" hidden>
+          <div class="panel profile-card" id="card-publico"></div>
+          <p class="profile-voltar"><a href="comunidade.html" class="btn btn--outline">Voltar à comunidade</a></p>
+        </div>
+
+        <p class="notice-card" id="perfil-inexistente" hidden>
+          Não encontramos esse perfil. <a href="comunidade.html">Voltar à comunidade</a>
+        </p>
+
+        <!-- Meu perfil -->
+        <div id="perfil-meu" hidden>
+
+          <div class="tabs" role="tablist" aria-label="Seções do perfil">
+            <button type="button" class="tabs__tab" role="tab" id="aba-perfil"
+                    aria-selected="true" aria-controls="painel-perfil">Meu perfil</button>
+            <button type="button" class="tabs__tab" role="tab" id="aba-desabafos" data-hash="desabafos"
+                    aria-selected="false" aria-controls="painel-desabafos" tabindex="-1">
+              Meus desabafos <span class="tabs__count" id="aba-contagem">0</span>
+            </button>
+          </div>
+
+          <!-- Aba 1: cartão do perfil + personalização -->
+          <div class="diary" id="painel-perfil" role="tabpanel" aria-labelledby="aba-perfil">
+            <div class="panel profile-card" id="card-meu" aria-live="polite"></div>
+
+            <div class="panel">
+              <h2>Personalizar perfil</h2>
+              <form id="form-perfil" novalidate>
+
+                <div class="form-group">
+                  <label for="pf-apelido">Apelido</label>
+                  <input type="text" id="pf-apelido" maxlength="21" autocomplete="off" spellcheck="false" />
+                  <p class="field-hint">Aparece como @apelido. De 3 a 20 caracteres: letras minúsculas, números ou _. Evite usar seu nome completo.</p>
+                </div>
+
+                <fieldset class="field-block">
+                  <legend>Cor do avatar</legend>
+                  <div class="swatches" id="pf-cores"></div>
+                </fieldset>
+
+                <fieldset class="field-block">
+                  <legend>Símbolo <span class="legend-hint">(opcional)</span></legend>
+                  <div class="tag-options" id="pf-emojis"></div>
+                </fieldset>
+
+                <div class="form-group">
+                  <label for="pf-bio">Sobre você <span class="legend-hint">(opcional)</span></label>
+                  <textarea id="pf-bio" rows="3" placeholder="Uma frase sobre você. Não coloque dados pessoais."></textarea>
+                  <p class="counter" id="pf-contador">0/160</p>
+                </div>
+
+                <p class="form-error" id="pf-erro" role="alert"></p>
+                <p class="form-ok" id="pf-ok" role="status"></p>
+
+                <button type="submit" class="btn btn--primary btn--block">Salvar perfil</button>
+              </form>
+              <div id="pf-apoio" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <!-- Aba 2: desabafos para gerenciar e apagar -->
+          <div class="panel" id="painel-desabafos" role="tabpanel" aria-labelledby="aba-desabafos" hidden>
+            <div class="panel__cabecalho">
+              <div>
+                <h2>Meus desabafos</h2>
+                <p class="panel__note panel__note--top">Aqui você vê tudo o que publicou e pode apagar. Apagar remove também os comentários que recebeu.</p>
+              </div>
+              <button type="button" class="btn btn--outline btn--perigo" id="apagar-todos" hidden>Apagar todos</button>
+            </div>
+            <p class="panel__note" id="desabafos-vazio">Você ainda não publicou nenhum desabafo. <a href="comunidade.html">Ir para a comunidade</a></p>
+            <div class="entries entries--full" id="meus-desabafos"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Mental Help — Projeto multidisciplinar de Desenvolvimento de Sistemas, 2026.</p>
+    </div>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+  <script src="diario.js"></script>
+  <script src="comunidade.js"></script>
+  <script src="perfil.js"></script>
+</body>
+</html>

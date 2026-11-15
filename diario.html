@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diário emocional — Mental Help</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo"><img decoding="async" class="logo__img" src="img/logo-sm.png" alt="" width="47" height="40" />Mental Help</a>
+
+      <nav class="nav" id="nav">
+        <a href="index.html">Início</a>
+        <a href="diario.html" aria-current="page">Diário</a>
+        <a href="conteudos.html">Conteúdos</a>
+        <a href="comunidade.html">Comunidade</a>
+      </nav>
+
+      <div class="header__actions" id="auth-area">
+        <a href="login.html" class="link-entrar">Entrar</a>
+        <a href="cadastro.html" class="btn btn--primary">Criar conta</a>
+      </div>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow eyebrow--light">Diário emocional</p>
+        <h1>Um espaço só seu para registrar como você está</h1>
+        <p class="page-hero__lead">
+          Anote seu humor e o que está sentindo. Com o tempo, você enxerga seus padrões.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--tint section--compact">
+      <div class="container">
+
+        <!-- Aparece para quem não está logado -->
+        <div class="notice-card" id="diario-aviso" hidden>
+          <h2>Entre para usar o diário</h2>
+          <p>Os registros ficam ligados à sua conta, para que só você tenha acesso a eles.</p>
+          <div class="notice-card__actions">
+            <a href="login.html" class="btn btn--primary">Entrar</a>
+            <a href="cadastro.html" class="btn btn--outline">Criar conta</a>
+          </div>
+        </div>
+
+        <!-- Aparece para quem está logado -->
+        <div id="diario-app" hidden>
+
+          <div class="tabs" role="tablist" aria-label="Seções do diário">
+            <button type="button" class="tabs__tab" role="tab" id="aba-registrar"
+                    aria-selected="true" aria-controls="painel-registrar">Registrar</button>
+            <button type="button" class="tabs__tab" role="tab" id="aba-analises" data-hash="analises"
+                    aria-selected="false" aria-controls="painel-analises" tabindex="-1">
+              Registros e análises <span class="tabs__count" id="aba-contagem">0</span>
+            </button>
+          </div>
+
+          <!-- Aba 1: formulário + gráfico da semana -->
+          <div class="diary" id="painel-registrar" role="tabpanel" aria-labelledby="aba-registrar">
+
+          <div class="panel diary__form">
+            <h2 id="diario-ola"></h2>
+
+            <form id="form-diario" novalidate>
+
+              <!-- fieldset agrupa campos que respondem a uma mesma pergunta -->
+              <fieldset class="field-block">
+                <legend>Como você está se sentindo hoje?</legend>
+                <div class="mood-options" id="opcoes-humor"></div>
+              </fieldset>
+
+              <fieldset class="field-block">
+                <legend>O que você está sentindo? <span class="legend-hint">(escolha quantos quiser)</span></legend>
+                <div class="tag-options" id="opcoes-sentimentos"></div>
+              </fieldset>
+
+              <div class="form-group">
+                <label for="texto">Quer escrever mais? <span class="legend-hint">(opcional)</span></label>
+                <textarea id="texto" rows="5" placeholder="O que aconteceu hoje? O que está passando pela sua cabeça?"></textarea>
+                <p class="counter" id="contador">0/500</p>
+              </div>
+
+              <p class="form-error" id="diario-erro" role="alert"></p>
+
+              <button type="submit" class="btn btn--primary btn--block">Salvar registro</button>
+            </form>
+
+            <div id="diario-feedback" aria-live="polite"></div>
+            <div id="diario-sugestoes" aria-live="polite"></div>
+
+            <p class="privacy-note">
+              Seus registros ficam salvos neste navegador, ligados à sua conta.
+              Precisa conversar agora? Ligue para o CVV: 188.
+            </p>
+          </div>
+
+          <div class="diary__side">
+            <div class="panel">
+              <h2>Sua semana</h2>
+              <div class="week-chart" id="semana" aria-label="Humor médio dos últimos 7 dias"></div>
+              <p class="panel__note" id="semana-resumo"></p>
+            </div>
+          </div>
+
+          </div>
+
+          <!-- Aba 2: cada registro com a análise que foi guardada junto -->
+          <div class="panel" id="painel-analises" role="tabpanel" aria-labelledby="aba-analises" hidden>
+            <h2>Seus registros e as análises</h2>
+            <p class="panel__note panel__note--top">
+              Cada registro guarda a análise feita na hora de salvar. Se você apagar o registro, a análise some junto.
+            </p>
+            <p class="panel__note" id="historico-vazio">Você ainda não registrou nada. Que tal começar hoje?</p>
+            <div class="entries entries--full" id="historico"></div>
+            <p class="ia-box__aviso">
+              Análises automáticas. Elas não substituem o acompanhamento de um profissional de saúde.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Mental Help — Projeto multidisciplinar de Desenvolvimento de Sistemas, 2026.</p>
+    </div>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+  <script src="ia.js"></script>
+  <script src="diario.js"></script>
+</body>
+</html>

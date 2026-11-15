@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mental Help — Apoio emocional para jovens</title>
+
+  <!-- Fontes do Google Fonts: uma serifada para títulos, uma sem serifa para o texto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== CABEÇALHO / MENU ===== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <img decoding="async" class="logo__img" src="img/logo-sm.png" alt="" width="47" height="40" />
+        Mental Help
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#problema">O problema</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#objetivos">Objetivos</a>
+        <a href="#equipe">Equipe</a>
+        <a href="diario.html">Diário</a>
+        <a href="conteudos.html">Conteúdos</a>
+        <a href="comunidade.html">Comunidade</a>
+      </nav>
+
+      <!-- Esta área muda sozinha: se a pessoa estiver logada, o auth.js
+           troca "Entrar / Criar conta" por "Olá, Nome / Sair". -->
+      <div class="header__actions" id="auth-area">
+        <a href="login.html" class="link-entrar">Entrar</a>
+        <a href="cadastro.html" class="btn btn--primary">Criar conta</a>
+      </div>
+
+      <!-- Botão do menu mobile (some no desktop) -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow eyebrow--light">Projeto multidisciplinar — Desenvolvimento de Sistemas</p>
+          <h1>Um espaço para entender <em>como você está</em>, dia após dia.</h1>
+          <p class="hero__lead">
+            O Mental Help é uma proposta de plataforma de apoio emocional para jovens.
+            Registre seu humor, acompanhe sua evolução e receba conteúdos para
+            cuidar melhor da sua saúde emocional.
+          </p>
+          <div class="hero__actions">
+            <a href="login.html" id="btn-comecar" class="btn btn--white btn--lg">Começar agora</a>
+            <a href="#como-funciona" class="btn btn--outline-light btn--lg">Ver como funciona</a>
+          </div>
+        </div>
+
+        <!-- Elemento assinatura: um "traço de humor", como um diário -->
+        <div class="hero__visual" aria-hidden="true">
+          <div class="mood-card">
+            <p class="mood-card__label">Seu humor esta semana</p>
+            <svg viewBox="0 0 320 140" class="mood-line">
+              <defs>
+                <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" style="stop-color: var(--blue-500); stop-opacity: 0.28" />
+                  <stop offset="100%" style="stop-color: var(--blue-500); stop-opacity: 0" />
+                </linearGradient>
+              </defs>
+              <polygon
+                points="10,90 55,60 100,100 145,40 190,70 235,20 280,55 310,35 310,140 10,140"
+                fill="url(#area)" />
+              <polyline
+                points="10,90 55,60 100,100 145,40 190,70 235,20 280,55 310,35"
+                fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="310" cy="35" r="6" class="mood-line__dot" />
+            </svg>
+            <div class="mood-card__days">
+              <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span>
+              <span>Sex</span><span>Sáb</span><span>Dom</span>
+            </div>
+            <div class="mood-card__chip">
+              <span class="mood-card__chip-dot"></span> Hoje: me sentindo bem
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== O PROBLEMA ===== -->
+    <section class="section" id="problema">
+      <div class="container section__grid">
+        <div class="section__heading">
+          <p class="eyebrow">Por que esse projeto existe</p>
+          <h2>Pedir ajuda ainda é difícil.</h2>
+        </div>
+        <p class="section__text">
+          O número de casos de ansiedade, depressão e outros sofrimentos emocionais
+          entre jovens vem crescendo, mas muita gente não sabe identificar os
+          primeiros sinais nem sabe por onde começar a buscar apoio. O Mental Help
+          nasce para ajudar a pessoa a observar seus próprios sentimentos, com
+          privacidade e no seu ritmo.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== COMO FUNCIONA ===== -->
+    <section class="section section--tint" id="como-funciona">
+      <div class="container">
+        <div class="section__heading section__heading--center">
+          <p class="eyebrow">Como funciona</p>
+          <h2>Tudo o que você vai encontrar na plataforma</h2>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </div>
+            <h3>Diário emocional</h3>
+            <p>Registre como você está se sentindo todos os dias, em poucos toques.</p>
+            <a href="diario.html" class="card__link">Abrir o diário →</a>
+          </article>
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+            <h3>Acompanhamento</h3>
+            <p>Veja como o seu humor mudou ao longo do tempo e entenda seus padrões.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <h3>Conteúdos recomendados</h3>
+            <p>Receba materiais sobre saúde emocional com base no que você registrou.</p>
+            <a href="conteudos.html" class="card__link">Ver conteúdos →</a>
+          </article>
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5Z"/></svg>
+            </div>
+            <h3>Rede de apoio</h3>
+            <p>Converse com outras pessoas passando por experiências parecidas.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3>Privacidade em primeiro lugar</h3>
+            <p>Seus registros são só seus. Suas senhas são guardadas de forma criptografada.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== OBJETIVOS DO PROJETO ===== -->
+    <section class="section" id="objetivos">
+      <div class="container">
+        <div class="section__heading section__heading--center">
+          <p class="eyebrow">Objetivos do projeto</p>
+          <h2>O que o Mental Help se propõe a fazer</h2>
+        </div>
+
+        <ol class="goals">
+          <li><span class="goals__index">01</span>Sistema de cadastro e autenticação com segurança e privacidade de dados.</li>
+          <li><span class="goals__index">02</span>Diário emocional para registro diário de humor e sentimentos.</li>
+          <li><span class="goals__index">03</span>Análise de sentimentos com técnicas básicas de IA e linguagem natural.</li>
+          <li><span class="goals__index">04</span>Recomendação de conteúdos educativos com base no histórico emocional.</li>
+          <li><span class="goals__index">05</span>Painel administrativo para gerenciar usuários e conteúdos.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== EQUIPE ===== -->
+    <section class="section section--tint" id="equipe">
+      <div class="container">
+        <div class="section__heading section__heading--center">
+          <p class="eyebrow">Quem fez</p>
+          <h2>Equipe do projeto</h2>
+        </div>
+        <ul class="team">
+          <li>Arthur Ramos</li>
+          <li>Francisco Henrique Silva Ferreira</li>
+          <li>Fernando Galdino Yokiti</li>
+          <li>Kauan da Silva Batista</li>
+          <li>Hector Prado Ferreira</li>
+        </ul>
+        <p class="team__school">E.E Carolina Cintra da Silveira — Desenvolvimento de Sistemas</p>
+      </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section class="cta">
+      <div class="container cta__inner">
+        <h2>Pronto para começar a se entender melhor?</h2>
+        <a href="cadastro.html" class="btn btn--white btn--lg">Criar minha conta</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Mental Help — Projeto multidisciplinar de Desenvolvimento de Sistemas, 2026.</p>
+    </div>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

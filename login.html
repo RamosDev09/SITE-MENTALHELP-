@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrar — Mental Help</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="auth-layout">
+
+    <aside class="auth-aside">
+      <a href="index.html" class="logo logo--light">
+        <img decoding="async" class="logo__img" src="img/logo-sm.png" alt="" width="47" height="40" />
+        Mental Help
+      </a>
+      <div>
+        <h2>Que bom te ver por aqui de novo.</h2>
+        <ul class="auth-points">
+          <li>Seus registros continuam só seus</li>
+          <li>Veja como foi a sua semana</li>
+          <li>Conteúdos para o seu momento</li>
+        </ul>
+      </div>
+      <p class="auth-aside__note">Projeto de TCC — Desenvolvimento de Sistemas</p>
+    </aside>
+
+    <main class="auth-main">
+      <div class="auth-topbar">
+        <a href="index.html" class="logo"><img loading="lazy" decoding="async" class="logo__img" src="img/logo-sm.png" alt="" width="47" height="40" />Mental Help</a>
+        <a href="index.html" class="auth-topbar__back">← Voltar ao início</a>
+      </div>
+
+      <div class="auth-card">
+        <h1>Entrar na sua conta</h1>
+        <p class="auth-card__sub">Use o e-mail e a senha que você cadastrou.</p>
+
+        <!-- Aparece só quando a pessoa acabou de criar a conta -->
+        <p class="form-success" id="form-success" hidden>Conta criada com sucesso! Agora é só entrar.</p>
+
+        <form id="form-login" novalidate>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" autocomplete="email" placeholder="voce@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="senha">Senha</label>
+            <div class="password-field">
+              <input type="password" id="senha" autocomplete="current-password" />
+              <button type="button" class="toggle-senha" data-toggle-senha="senha">Mostrar</button>
+            </div>
+          </div>
+
+          <p class="form-error" id="form-error" role="alert"></p>
+
+          <button type="submit" class="btn btn--primary btn--block" id="btn-entrar">Entrar</button>
+        </form>
+
+        <p class="auth-switch">Ainda não tem conta? <a href="cadastro.html">Criar conta</a></p>
+      </div>
+    </main>
+  </div>
+
+  <script src="auth.js"></script>
+</body>
+</html>
